@@ -1,11 +1,49 @@
 #  1. Convert an array of arrays into a hash.
 #     For example, [[1, 3], [8, 9], [2, 16]] becomes {1 => 3, 8 => 9, 2 => 16}.
+pairs = [[1, 3], [8, 9], [2, 16]]
+pairs_hash = {} #set up empty variable for hash
+index = 0
+while index < pairs.length #while loop, interating through entire array "pairs"
+  key = pairs[index][0] #assigning a variable called "key" to the value of the first element in every one the pairs arrays 1 , 8, 
+  value = pairs[index][1] #assigning a variable called "value" to the value of the second element in every one the pairs arrays 3, 9
+  pairs_hash[key] = value #{1 => 3, 8 => 9, 2 => 16}
+  # 
+  index += 1
+end
+
+p pairs_hash
+
 
 #  2. Convert an array of hashes into a hash using the :id key from the array's hashes as the keys in the new hash.
 #     For example, [{id: 1, color: "blue", price: 32}, {id: 2, color: "red", price: 12}] becomes {1 => {id: 1, color: "blue", price: 32}, 2 => {id: 2, color: "red", price: 12}}.
+pillows = [{id: 1, color: "blue", price: 32}, {id: 2, color: "red", price: 12}]
+pillows_hash = {}
+index = 0 
+while index < pillows.length
+ pillow = pillows[index] #each individual pillow, entire hash of that pillow {id: 1, color: "blue", price: 32}
+ pillow_id = pillow[:id]
+ pillows_hash[pillow_id] = pillow
+ index += 1
+end
+
+p pillows_hash
 
 #  3. Convert a string into a hash with keys for each letter in the string and values for the number of times the letter appears in the string.
 #     For example, "bookkeeper" becomes {"b" => 1, "o" => 2, "k" => 2, "e" => 3, "p" => 1, "r" => 1}.
+word = "bookkeeper"
+letter_frequencies = {}
+index = 0 
+while index < word.length
+ letter = word[index] # will loop through each letter of the string "bookkeeper" letter is key "b", "o"
+ if letter_frequencies[letter] == nil #if letter isn't in hash, add it to hash
+  letter_frequencies[letter] = 1 # set frequency value to 1
+ else 
+  letter_frequencies[letter] += 1 #frequency counter
+ end 
+ index += 1
+end 
+
+p letter_frequencies
 
 #  4. Convert a hash into an array of arrays.
 #     For example, {"chair" => 100, "book" => 14} becomes [["chair", 100], ["book", 14]].
